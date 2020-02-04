@@ -5,6 +5,7 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = express()
+const port = process.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -24,14 +25,14 @@ app.use(express.static(publicDirectoryPath))
 app.get('', (req, res) => {
     res.render('index', {           //this sends index.hbs to be rendered on the screen
         title: 'Weather',           //an object sent along with the hbs file that has to be rendered and is not hard-coded
-        name: 'Andrew Mead'
+        name: 'Vaibhav'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About Me',
-        name: 'Andrew Mead'
+        name: 'Vaibhav'
     })
 })
 
@@ -39,7 +40,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         helpText: 'This is some helpful text.',
         title: 'Help',
-        name: 'Andrew Mead'
+        name: 'Vaibhav'
     })
 })
 
@@ -85,7 +86,7 @@ app.get('/products', (req, res) => {        //this is nothing...just clearing ou
 app.get('/help/*', (req, res) => {
     res.render('404', {
         title: '404',
-        name: 'Andrew Mead',
+        name: 'Vaibhav',
         errorMessage: 'Help article not found.'
     })
 })
@@ -93,13 +94,13 @@ app.get('/help/*', (req, res) => {
 app.get('*', (req, res) => {            //if something else is present in the search bar whose page is not provided,  we use *(wildcard)
     res.render('404', {
         title: '404',
-        name: 'Andrew Mead',
+        name: 'Vaibhav',
         errorMessage: 'Page not found.'
     })
 })
 
 //Below this also to be present in every app to be made
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port '+port)
 })

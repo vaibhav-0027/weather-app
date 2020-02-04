@@ -17,7 +17,7 @@ weatherForm.addEventListener('submit', (e) => {     //this is an event listener 
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = ''
 
-    fetch('http://localhost:3000/weather?address=' + location).then((response) => {     //here, we are calling the webpage that return the json data about the weather forecast of the specified location
+    fetch('/weather?address=' + location).then((response) => {     //here, we are calling the webpage that return the json data about the weather forecast of the specified location
         response.json().then((data) => {        //this converts the response to json    //actually, this is not a webpage but kind of an api constructed by US
             if (data.error) {
                 messageOne.textContent = data.error
